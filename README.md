@@ -24,12 +24,16 @@ docker run -v /`pwd`:/wiki -p 4567:80 gollum
 cp oauth2_proxy.cfg /etc/oauth2_proxy.cfg
 # Edit the configuration as per your requirement
 vim /etc/oauth2_proxy.cfg
-# Add more steups here
+# Add more steps here
 ```
 
 ## Now setup nginx:
 
-(TODO)
+```bash
+apt-get install nginx
+cd /etc/nginx/
+# TODO
+```
 
 ## And viola, you should have it working
 
