@@ -6,38 +6,36 @@ See the [Gollum via Docker][docker] post on the Gollum wiki as well.
 
 Steps to get this working:
 
-## Get Gollum running via Docker:
+## 1. Setup configuration
 
-```bash
-git clone git@github.com:razorpay/gollum-setup.git
+1. Copy `env.sample` to `env.list`
+2. Edit values in `env.list`. See Configuration section below for what everything does.
+
+## 2. Run docker 
+
+```sh
+# Replace this with your own git wiki
+git clone https://github.com/razorpay/gollum-setup.wiki.git
 cd gollum-setup
-docker build -t gollum .
-mkdir -p ~/wiki
-cd ~/wiki
-git init
-docker run -v /`pwd`:/wiki -p 4567:80 gollum
+docker pull razorpay/gollum
+docker run -v /`pwd`:/wiki -p 4567:80 --env-file env.list razorpay/gollum
 ```
 
-## Now run the oauth2_proxy:
+If you'd like to setup a reverse proxy for TLS, you'll have to do that on your own for now.
 
-```bash
-cp oauth2_proxy.cfg /etc/oauth2_proxy.cfg
-# Edit the configuration as per your requirement
-vim /etc/oauth2_proxy.cfg
-# Add more steps here
+## Configuration
+
+```
+EMAIL_DOMAIN=example.com (The google apps domain)
+REDIRECT_URL=https://wiki.example.com/oauth2/callback
 ```
 
-## Now setup nginx:
+If you have a reverse proxy, use REDIRECT_URL to pass the complete HTTPS Url.
 
-```bash
-apt-get install nginx
-cd /etc/nginx/
-# TODO
-```
+## License
 
-## And viola, you should have it working
+The very little code in this repository is licensed under MIT.
 
-(TODO)
 
 [docker]: https://github.com/gollum/gollum/wiki/Gollum-via-Docker
 [blog]: https://razorpay.com/blog/TODO
