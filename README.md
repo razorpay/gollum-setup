@@ -30,7 +30,7 @@ EMAIL_DOMAIN=example.com (The google apps domain)
 REDIRECT_URL=https://wiki.example.com/oauth2/callback
 ```
 
-If you have a reverse proxy, use REDIRECT_URL to pass the complete HTTPS Url.
+If you have a reverse proxy, use REDIRECT_URL to pass the complete HTTPS URL.
 
 ## License
 
