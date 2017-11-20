@@ -1,4 +1,4 @@
-#!/usr/local/bin/dumb-init /bin/sh
+#!/usr/bin/dumb-init /bin/sh
 cd /app
 oauth2_proxy -client-id "$CLIENT_ID" -client-secret "$CLIENT_SECRET" \
 		-email-domain "$EMAIL_DOMAIN" -http-address "0.0.0.0:80" \
