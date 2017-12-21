@@ -25,17 +25,27 @@ If you'd like to setup a reverse proxy for TLS, you'll have to do that on your o
 
 ## Configuration
 
+You can pass it the following environment variables:
+
 ```
-EMAIL_DOMAIN=example.com (The google apps domain)
-REDIRECT_URL=https://wiki.example.com/oauth2/callback
+CLIENT_ID=
+CLIENT_SECRET=
+PROVIDER=google
+EMAIL_DOMAIN=razorpay.com
+REDIRECT_URL=
+GIT_REMOTE_URL=
+COOKIE_SECRET=
 ```
 
-If you have a reverse proxy, use REDIRECT_URL to pass the complete HTTPS URL.
+If you have a reverse proxy, use REDIRECT_URL to pass the complete HTTPS URL. If the `GIT_REMOTE_URL` is setup, and the `/wiki` directory is not a valid git repository, it automatically clones the given repo.
+
+## GitHub
+
+If you have GIT_REMOTE_URL setup, make sure that either the repo is read-world, or you mount the correct `id_rsa` and `id_rsa.pub` files in the `/root/.ssh` directory.
 
 ## License
 
 The very little code in this repository is licensed under MIT.
-
 
 [docker]: https://github.com/gollum/gollum/wiki/Gollum-via-Docker
 [blog]: https://razorpay.com/blog/TODO
