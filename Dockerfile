@@ -5,7 +5,7 @@ RUN apk --no-cache --update add \
     && rm -rf /var/cache/apk/* \
     && mkdir -p /app
 
-COPY ["Gemfile.lock", "Gemfile", "config.ru", "cron.sh", "/app/"]
+COPY ["Gemfile.lock", "Gemfile", "config.ru", "/app/"]
 
 RUN wget -O /tmp/oauth2_proxy.tar.gz https://github.com/bitly/oauth2_proxy/releases/download/v2.2/oauth2_proxy-2.2.0.linux-amd64.go1.8.1.tar.gz && \
     cd /tmp/ && \
@@ -24,4 +24,6 @@ RUN echo -e "StrictHostKeyChecking no" >> /etc/ssh/ssh_config && \
     mkdir /root/.ssh
 
 ENTRYPOINT ["/gollum.sh"]
+
+COPY ["cron", "/app/"]
 EXPOSE 8080

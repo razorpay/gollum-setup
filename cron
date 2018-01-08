@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/dumb-init /bin/sh
 
 cd /wiki
 git push origin master

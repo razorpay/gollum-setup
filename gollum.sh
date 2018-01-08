@@ -19,7 +19,7 @@ if [ -f /root/.ssh/id_rsa ]; then
   chmod 600 /root/.ssh/id_rsa
   ssh-keygen -y -f /root/.ssh/id_rsa > /root/.ssh/id_rsa.pub
   echo "[+] Using SSH key for git pushes"
-  echo "*/2 * * * * /app/cron.sh > /tmp/crontab.tmp"
+  echo "*/2 * * * * /app/cron" > /tmp/crontab.tmp
   crontab /tmp/crontab.tmp
   rm /tmp/crontab.tmp
   echo "[+] Crontab setup for every 5 minutes"
@@ -32,5 +32,4 @@ oauth2_proxy -client-id "$CLIENT_ID" -client-secret "$CLIENT_SECRET" \
 
 rackup --port 4000 --host 0.0.0.0 &
 # -f  Foreground
-# -d N  Set log level, log to stderr (Most verbose:0, default:8)
-crond -fd 2
+crond -f
