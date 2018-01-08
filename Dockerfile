@@ -24,4 +24,4 @@ RUN echo -e "StrictHostKeyChecking no" >> /etc/ssh/ssh_config && \
     mkdir /root/.ssh
 
 ENTRYPOINT ["/gollum.sh"]
-EXPOSE 80
+EXPOSE 8080

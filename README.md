@@ -18,7 +18,7 @@ Steps to get this working:
 git clone https://github.com/razorpay/gollum-setup.wiki.git
 cd gollum-setup
 docker pull razorpay/gollum
-docker run -v /path/to/wiki:/wiki -v /path/to/id_rsa:/root/.ssh/id_rsa -p 4567:80 --env-file env.list razorpay/gollum
+docker run -v /path/to/wiki:/wiki -v /path/to/id_rsa:/root/.ssh/id_rsa -p 4567:8080 --env-file env.list razorpay/gollum
 ```
 
 If you'd like to setup a reverse proxy for TLS, you'll have to do that on your own for now. The container respects the `X-Forwarded-*` headers and will work behind a reverse-proxy correctly.

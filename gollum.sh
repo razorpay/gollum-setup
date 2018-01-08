@@ -31,7 +31,6 @@ oauth2_proxy -client-id "$CLIENT_ID" -client-secret "$CLIENT_SECRET" \
   -provider "$PROVIDER" -upstream "http://localhost:4000" &
 
 rackup --port 4000 --host 0.0.0.0 &
-# -n         run in foreground
-# -P         use PATH="/usr/bin:/bin"
-# -s         log into syslog instead of sending mails
-crond -Pns
+# -f  Foreground
+# -d N  Set log level, log to stderr (Most verbose:0, default:8)
+crond -fd 2
