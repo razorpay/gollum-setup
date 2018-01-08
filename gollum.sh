@@ -19,7 +19,7 @@ if [ -f /root/.ssh/id_rsa ]; then
   chmod 600 /root/.ssh/id_rsa
   ssh-keygen -y -f /root/.ssh/id_rsa > /root/.ssh/id_rsa.pub
   echo "[+] Using SSH key for git pushes"
-  echo "*/2 * * * * /app/cron" > /tmp/crontab.tmp
+  echo "*/5 * * * * /app/cron" > /tmp/crontab.tmp
   crontab /tmp/crontab.tmp
   rm /tmp/crontab.tmp
   echo "[+] Crontab setup for every 5 minutes"
