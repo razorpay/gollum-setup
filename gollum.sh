@@ -19,11 +19,19 @@ if [ -f /root/.ssh/id_rsa ]; then
   chmod 600 /root/.ssh/id_rsa
   ssh-keygen -y -f /root/.ssh/id_rsa > /root/.ssh/id_rsa.pub
   echo "[+] Using SSH key for git pushes"
+  echo "*/2 * * * * /app/cron.sh > /tmp/crontab.tmp"
+  crontab /tmp/crontab.tmp
+  rm /tmp/crontab.tmp
+  echo "[+] Crontab setup for every 5 minutes"
 fi
 
 oauth2_proxy -client-id "$CLIENT_ID" -client-secret "$CLIENT_SECRET" \
-  -email-domain "$EMAIL_DOMAIN" -http-address "0.0.0.0:80" \
+  -email-domain "$EMAIL_DOMAIN" -http-address "0.0.0.0:8080" \
   -cookie-secret "$COOKIE_SECRET" -redirect-url "$REDIRECT_URL" \
   -provider "$PROVIDER" -upstream "http://localhost:4000" &
 
-rackup --port 4000 --host 0.0.0.0
+rackup --port 4000 --host 0.0.0.0 &
+# -n         run in foreground
+# -P         use PATH="/usr/bin:/bin"
+# -s         log into syslog instead of sending mails
+crond -Pns
