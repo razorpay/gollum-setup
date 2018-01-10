@@ -1,4 +1,5 @@
 #!/usr/bin/dumb-init /bin/sh
 
 cd /wiki
+chmod 0400 /root/.ssh/id_rsa
 git push origin master
