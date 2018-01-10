@@ -9,6 +9,7 @@ if [ ! -d /wiki/.git ]; then
   # Clone if we have a URL
   else
     echo "[+] Cloning git repo from $GIT_REMOTE_URL"
+    rm -rf /wiki/{*,.*}
     git clone $GIT_REMOTE_URL /wiki
   fi
 fi
@@ -17,7 +18,11 @@ fi
 # fix the perms and generate the public key
 if [ -f /root/.ssh/id_rsa ]; then
   chmod 600 /root/.ssh/id_rsa
-  ssh-keygen -y -f /root/.ssh/id_rsa > /root/.ssh/id_rsa.pub
+
+  if [ ! -d /root/.ssh/id_rsa.pub ]; then
+    ssh-keygen -y -f /root/.ssh/id_rsa > /root/.ssh/id_rsa.pub
+  fi
+  
   echo "[+] Using SSH key for git pushes"
   echo "*/5 * * * * /app/cron" > /tmp/crontab.tmp
   crontab /tmp/crontab.tmp
