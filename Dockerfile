@@ -1,4 +1,4 @@
-FROM ruby:2.4-alpine3.6
+FROM ruby:alpine
 
 RUN apk --no-cache --update add \
     icu-dev alpine-sdk dumb-init openssh-client \
