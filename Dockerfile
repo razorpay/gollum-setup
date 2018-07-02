@@ -1,9 +1,9 @@
 FROM ruby:alpine
 
-RUN apk --no-cache --update add \
-    icu-dev alpine-sdk dumb-init openssh-client \
-    && rm -rf /var/cache/apk/* \
-    && mkdir -p /app
+WORKDIR /app
+
+RUN apk --no-cache add \
+    icu-dev alpine-sdk dumb-init openssh-client
 
 COPY ["Gemfile.lock", "Gemfile", "config.ru", "/app/"]
 
