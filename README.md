@@ -1,6 +1,6 @@
 # gollum-setup
 
-[![](https://images.microbadger.com/badges/image/razorpay/gollum:1.0.0.svg)](https://microbadger.com/images/razorpay/gollum:1.0.0) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![](https://images.microbadger.com/badges/image/razorpay/gollum:2.0.0.svg)](https://microbadger.com/images/razorpay/gollum:2.0.0) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 Scripts to help you setup gollum. See our [blog post][blog] for more details on this setup.
 
@@ -19,8 +19,8 @@ Steps to get this working:
 # Replace this with your own git wiki
 git clone https://github.com/razorpay/gollum-setup.wiki.git
 cd gollum-setup
-docker pull razorpay/gollum:1.0.0
-docker run -v /path/to/wiki:/wiki -v /path/to/id_rsa:/root/.ssh/id_rsa -p 8080:8080 --env-file env.list razorpay/gollum:1.0.1
+docker pull razorpay/gollum:2.0.0
+docker run -v /path/to/wiki:/wiki -v /path/to/id_rsa:/root/.ssh/id_rsa -p 8080:8080 --env-file env.list razorpay/gollum:2.0.0
 ```
 
 If you'd like to setup a reverse proxy for TLS, you'll have to do that on your own for now. The container respects the `X-Forwarded-*` headers and will work behind a reverse-proxy correctly.
