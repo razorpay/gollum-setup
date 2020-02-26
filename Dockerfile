@@ -5,14 +5,14 @@ WORKDIR /app
 RUN apk --no-cache add \
     icu-dev alpine-sdk dumb-init openssh-client
 
-COPY ["Gemfile.lock", "Gemfile", "config.ru", "/app/"]
-
-RUN wget -O /tmp/oauth2_proxy.tar.gz https://github.com/bitly/oauth2_proxy/releases/download/v2.2/oauth2_proxy-2.2.0.linux-amd64.go1.8.1.tar.gz && \
+RUN wget -O /tmp/oauth2_proxy.tar.gz https://github.com/pusher/oauth2_proxy/releases/download/v5.0.0/oauth2_proxy-v5.0.0.linux-amd64.go1.13.6.tar.gz && \
     cd /tmp/ && \
-    tar -xzf /tmp/oauth2_proxy.tar.gz oauth2_proxy-2.2.0.linux-amd64.go1.8.1/oauth2_proxy --strip-components=1 && \
+    tar -xzf /tmp/oauth2_proxy.tar.gz oauth2_proxy-v5.0.0.linux-amd64.go1.13.6/oauth2_proxy --strip-components=1 && \
     mv /tmp/oauth2_proxy /usr/local/bin/oauth2_proxy && \
     chmod +x /usr/local/bin/oauth2_proxy && \
     rm /tmp/oauth2_proxy.tar.gz
+
+COPY ["Gemfile.lock", "Gemfile", "config.ru", "/app/"]
 
 WORKDIR /app
 RUN gem install bundler && bundle install
