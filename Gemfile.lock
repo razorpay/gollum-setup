@@ -40,7 +40,7 @@ GEM
     rack (1.6.13)
     rack-protection (1.5.5)
       rack
-    rdoc (6.2.1)
+    rdoc (6.3.2)
     rouge (2.2.1)
     sanitize (2.1.1)
       nokogiri (>= 1.4.4)
